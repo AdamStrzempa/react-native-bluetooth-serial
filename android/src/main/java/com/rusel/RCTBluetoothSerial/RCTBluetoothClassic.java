@@ -37,9 +37,7 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
     private static final UUID MY_UUID=UUID.fromString("8ce255c0-223a-11e0-ac64-0803450c9a66");
 
     public static final String TAG = "RCTBC";
-
-    int testCounter = 0;
-
+    
     int REQUEST_ENABLE_BLUETOOTH = 1;
 
     static final int STATE_LISTENING = 1;
@@ -52,7 +50,6 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
 
     RCTBluetoothClassic(ReactApplicationContext reactContext) {
         super(reactContext);
-        Activity currentActivity = getCurrentActivity();
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         if (!bluetoothAdapter.isEnabled()) {
@@ -70,7 +67,11 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
 
     public void sendData(String message) {
         byte[] bytes = message.getBytes();
-        sendReceive.write(bytes);
+        try {
+            sendReceive.write(bytes);
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
     }
 
     public void startServer() {
@@ -100,8 +101,7 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
 
     public void emitEvent (String tempMsg) {
         WritableMap payload = Arguments.createMap();
-        testCounter++;
-        payload.putString("tempMsg", tempMsg + testCounter);
+        payload.putString("tempMsg", tempMsg);
         ReactContext reactContext = getReactApplicationContext();
         reactContext
                 .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
