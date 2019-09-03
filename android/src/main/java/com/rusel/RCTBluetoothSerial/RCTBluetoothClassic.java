@@ -56,8 +56,14 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         if (!bluetoothAdapter.isEnabled()) {
-            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            currentActivity.startActivityForResult(enableIntent, REQUEST_ENABLE_BLUETOOTH);
+            Activity activity = getCurrentActivity();
+            Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            if (activity != null) {
+                activity.startActivityForResult(intent, REQUEST_ENABLE_BLUETOOTH);
+            } else {
+                Exception e = new Exception("Cannot start activity");
+                Log.e(TAG, "Cannot start activity", e);
+            }
         }
         handlerMessageThread();
     }

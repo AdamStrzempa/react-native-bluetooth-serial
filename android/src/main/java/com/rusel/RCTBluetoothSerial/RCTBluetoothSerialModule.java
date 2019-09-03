@@ -172,8 +172,8 @@ public class RCTBluetoothSerialModule extends ReactContextBaseJavaModule impleme
     /**
      * Enable bluetooth
      */
-    public void sendData(Promise promise) {
-        mBluetoothClassic.sendData("its my test message. Can you read this??????");
+    public void sendData(String data, Promise promise) {
+        mBluetoothClassic.sendData(data);
         promise.resolve(true);
     }
 
