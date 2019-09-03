@@ -1,0 +1,45 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:1:1-4:12
+INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:1:1-4:12
+INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:1:1-4:12
+INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:1:1-4:12
+INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:1:1-4:12
+INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:1:1-4:12
+INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:1:1-4:12
+	package
+		ADDED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:1:70-108
+		INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+		INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+		ADDED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:1:1-4:12
+		INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+		ADDED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:1:1-4:12
+		INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.BLUETOOTH
+ADDED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:2:5-68
+	android:name
+		ADDED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:2:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:3:5-74
+	android:name
+		ADDED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml:3:22-71
+uses-sdk
+INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+		ADDED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+		INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+		ADDED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
+		INJECTED from /Users/adamstrzempa/Desktop/ReactPoland/retro-game/node_modules/react-native-bluetooth-serial/android/src/main/AndroidManifest.xml
