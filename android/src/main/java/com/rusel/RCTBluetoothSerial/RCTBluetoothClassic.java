@@ -76,25 +76,27 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
     }
 
     public void startServer() {
-        ServerClass serverClass = new ServerClass();
-        serverClass.start();
+        if (bluetoothAdapter != null) {
+            ServerClass serverClass = new ServerClass();
+            serverClass.start();
+        }
     }
 
     public void clientServer() {
-        Set<BluetoothDevice> bt=bluetoothAdapter.getBondedDevices();
-        String[] strings=new String[bt.size()];
-        btArray=new BluetoothDevice[bt.size()];
-        int index=0;
+        if (bluetoothAdapter != null) {
+            Set<BluetoothDevice> bt = bluetoothAdapter.getBondedDevices();
+            String[] strings = new String[bt.size()];
+            btArray = new BluetoothDevice[bt.size()];
+            int index = 0;
 
-        if( bt.size()>0)
-        {
-            for(BluetoothDevice device : bt)
-            {
-                btArray[index]= device;
-                strings[index]=device.getName();
-                ClientClass clientClass = new ClientClass(device);
-                clientClass.start();
-                index++;
+            if (bt.size() > 0) {
+                for (BluetoothDevice device : bt) {
+                    btArray[index] = device;
+                    strings[index] = device.getName();
+                    ClientClass clientClass = new ClientClass(device);
+                    clientClass.start();
+                    index++;
+                }
             }
         }
     }
@@ -248,6 +250,11 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
                 sendReceive.start();
 
             } catch (IOException e) {
+                try {
+                    socket.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 e.printStackTrace();
                 Message message=Message.obtain();
                 message.what=STATE_CONNECTION_FAILED;
@@ -301,6 +308,7 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
 
         public void write(byte[] bytes)
         {
+            Log.d(TAG, bytes.toString());
             try {
                 outputStream.write(bytes);
             } catch (IOException e) {
