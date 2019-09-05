@@ -37,7 +37,7 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
     private static final UUID MY_UUID=UUID.fromString("8ce255c0-223a-11e0-ac64-0803450c9a66");
 
     public static final String TAG = "RCTBC";
-    
+
     int REQUEST_ENABLE_BLUETOOTH = 1;
 
     static final int STATE_LISTENING = 1;
@@ -51,18 +51,19 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
     RCTBluetoothClassic(ReactApplicationContext reactContext) {
         super(reactContext);
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-
-        if (!bluetoothAdapter.isEnabled()) {
-            Activity activity = getCurrentActivity();
-            Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            if (activity != null) {
-                activity.startActivityForResult(intent, REQUEST_ENABLE_BLUETOOTH);
-            } else {
-                Exception e = new Exception("Cannot start activity");
-                Log.e(TAG, "Cannot start activity", e);
+        if (bluetoothAdapter != null) {
+            if (!bluetoothAdapter.isEnabled()) {
+                Activity activity = getCurrentActivity();
+                Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                if (activity != null) {
+                    activity.startActivityForResult(intent, REQUEST_ENABLE_BLUETOOTH);
+                } else {
+                    Exception e = new Exception("Cannot start activity");
+                    Log.e(TAG, "Cannot start activity", e);
+                }
             }
+            handlerMessageThread();
         }
-        handlerMessageThread();
     }
 
     public void sendData(String message) {
@@ -96,7 +97,6 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
                 index++;
             }
         }
-
     }
 
     public void emitEvent (String tempMsg) {
