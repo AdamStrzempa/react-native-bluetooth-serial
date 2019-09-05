@@ -39,6 +39,10 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
     public static final String TAG = "RCTBC";
 
     int REQUEST_ENABLE_BLUETOOTH = 1;
+    int REQUEST_DISCOVERABLE = 2;
+
+
+    int SERVER_TIMEOUT_SEC = 5000;
 
     static final int STATE_LISTENING = 1;
     static final int STATE_CONNECTING=2;
@@ -46,6 +50,9 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
     static final int STATE_CONNECTION_FAILED=4;
     static final int STATE_MESSAGE_RECEIVED=5;
     static final int STATE_CONNECTION_LOST=6;
+
+    private ClientClass clientTask;
+    private ServerClass serverTask;
 
 
     RCTBluetoothClassic(ReactApplicationContext reactContext) {
@@ -77,8 +84,8 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
 
     public void startServer() {
         if (bluetoothAdapter != null) {
-            ServerClass serverClass = new ServerClass();
-            serverClass.start();
+            serverTask = new ServerClass();
+            serverTask.start();
         }
     }
 
@@ -93,8 +100,8 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
                 for (BluetoothDevice device : bt) {
                     btArray[index] = device;
                     strings[index] = device.getName();
-                    ClientClass clientClass = new ClientClass(device);
-                    clientClass.start();
+                    clientTask = new ClientClass(device);
+                    clientTask.start();
                     index++;
                 }
             }
@@ -298,6 +305,11 @@ public class RCTBluetoothClassic extends ReactContextBaseJavaModule {
                     handler.obtainMessage(STATE_MESSAGE_RECEIVED,bytes,-1,buffer).sendToTarget();
                     Log.d(TAG, "input");
                 } catch (IOException e) {
+                    try {
+                        bluetoothSocket.close();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     Message message=Message.obtain();
                     message.what=STATE_CONNECTION_LOST;
                     handler.sendMessage(message);

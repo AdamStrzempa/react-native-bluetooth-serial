@@ -46,6 +46,8 @@ public class RCTBluetoothSerialModule extends ReactContextBaseJavaModule impleme
     // Other stuff
     private static final int REQUEST_ENABLE_BLUETOOTH = 1;
     private static final int REQUEST_PAIR_DEVICE = 2;
+    private static final int REQUEST_DISCOVERABLE = 3;
+    private static final int SERVER_TIMEOUT_SEC = 5000;
     // Members
     private BluetoothAdapter mBluetoothAdapter;
     private RCTBluetoothSerialService mBluetoothService;
@@ -59,6 +61,7 @@ public class RCTBluetoothSerialModule extends ReactContextBaseJavaModule impleme
     private Promise mConnectedPromise;
     private Promise mDeviceDiscoveryPromise;
     private Promise mPairDevicePromise;
+    private Promise mRequestDiscoverable;
     private String delimiter = "";
 
     public RCTBluetoothSerialModule(ReactApplicationContext reactContext) {
@@ -121,6 +124,14 @@ public class RCTBluetoothSerialModule extends ReactContextBaseJavaModule impleme
                 if (D) Log.d(TAG, "Pairing failed");
             }
         }
+
+        if (requestCode == REQUEST_DISCOVERABLE) {
+            if (resultCode > 0) {
+                mRequestDiscoverable.resolve(true);
+            } else {
+                mRequestDiscoverable.reject(new Exception("User did not enable Discover"));
+            }
+        }
     }
 
     @Override
@@ -177,6 +188,19 @@ public class RCTBluetoothSerialModule extends ReactContextBaseJavaModule impleme
         promise.resolve(true);
     }
 
+    @ReactMethod
+    /**
+     * Enable request discoverable
+     */
+    public void requestDiscoverable(Promise promise) {
+        mRequestDiscoverable = promise;
+        Activity activity = getCurrentActivity();
+        Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+        intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, SERVER_TIMEOUT_SEC);
+        if (activity != null) {
+            activity.startActivityForResult(intent, REQUEST_DISCOVERABLE);
+        }
+    }
 
     @ReactMethod
     /**
